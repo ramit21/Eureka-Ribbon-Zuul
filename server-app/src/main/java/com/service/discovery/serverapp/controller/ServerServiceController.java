@@ -16,8 +16,8 @@ public class ServerServiceController {
 	
 	@GetMapping("/server-app-service/greet/{name}")
 	public GreetResponse getGreetingMessage(@PathVariable String name) {
-		GreetResponse response = new GreetResponse("Hello Ramit");
-		response.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		GreetResponse response = new GreetResponse("Hello "+name, 
+				Integer.parseInt(env.getProperty("local.server.port")));
 		return response;
 	}
 }

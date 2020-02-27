@@ -2,28 +2,20 @@ package com.service.discovery.serverapp.model;
 
 public class GreetResponse {
 	
-	private String response;
-	private int port;
+	private final String message;
+	private final int port;
 
-	public GreetResponse(String response) {
-		this.response = response;
+	public GreetResponse(String message, int port) {
+		this.message = message;
+		this.port = port;
 	}
 
 	public String getResponse() {
-		return response;
-	}
-
-	public void setResponse(String response) {
-		this.response = response;
+		return message;
 	}
 
 	public int getPort() {
 		return port;
 	}
-
-	public void setPort(int port) {
-		this.port = port;
-	}
-	
 	
 }
