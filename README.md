@@ -1,6 +1,12 @@
 # Eureka-Ribbon-Zuul
 POC on the way!!
 
+**Netflix-eureka:** Naming server
+
+**Ribbon:** Client-side load balancer
+
+**Apache-Zuul:** API Gateway
+
 Start eureka-naming-server(8761), client-app(8000) and the server app(8100). Start more instances of server app with different port nos:
 
 ```
@@ -24,4 +30,4 @@ Client will then hit the naming server, which will return a list of registered s
 
 Disadvantage: client needs to know the method signature defined at the server end.
 
-
+**API ** 
