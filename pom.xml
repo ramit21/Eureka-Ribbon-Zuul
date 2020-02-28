@@ -23,6 +23,7 @@
 	<modules>
 		<module>client-app</module>
 		<module>server-app</module>
+		<module>eureka-naming-server</module>
 	</modules>
 	
 </project>
