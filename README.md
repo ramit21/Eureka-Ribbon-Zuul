@@ -1,13 +1,12 @@
 # Eureka-Ribbon-Zuul
-POC on the way!!
 
 **Netflix-eureka:** Naming server
 
 **Ribbon:** Client-side load balancer
 
-**Apache-Zuul:** API Gateway
+**Netflix-Zuul:** API Gateway
 
-Start eureka-naming-server(8761), client-app(8000) and the server app(8100). Start more instances of server app with different port nos:
+Start eureka-naming-server(8761), client-app(8000), server app(8100) and api-gateway (9000). Start more instances of server app with different port nos:
 
 ```
 -Dserver.port=8101
@@ -17,12 +16,17 @@ client-app and server-app services are clients to eureka naming server. When the
 http://localhost:8761
 ```
 
-Hit client service:
+Url to hit the server from the client app:
+http://<api-gateway-host>:port/{server-application-name}/{uri}
 ```
 http://localhost:8001/client-app-service/greet/Ramit
 ```
 Client will then hit the naming server, which will return a list of registered server apps (as configured in client's feign proxy). Ribbon on the client will then perform client side load balancing in round robin fashion, and send request to the chosen backend service. This server instance will then return the greet message for the name parameter as sent by the client.
 
+Url to hit the server via API gateway: (hit below url, and see Zuul do the logging for the request)
+```
+http://localhost:9000/client-app-service/client-app-service/greet/Ramit
+```
 
 **Feign** gives 2 advantages:
 1. It is more cleaner than using restTemplate.exchange
@@ -30,4 +34,10 @@ Client will then hit the naming server, which will return a list of registered s
 
 Disadvantage: client needs to know the method signature defined at the server end.
 
-**API ** 
+**API gateway uses:**
+1. Authentication and authorisation
+2. Rate limit
+3. Fault tolerance
+4. Service aggregation
+
+ 

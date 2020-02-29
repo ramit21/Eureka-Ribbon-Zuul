@@ -24,6 +24,7 @@
 		<module>client-app</module>
 		<module>server-app</module>
 		<module>eureka-naming-server</module>
+		<module>zuul-api-server</module>
 	</modules>
 	
 </project>
